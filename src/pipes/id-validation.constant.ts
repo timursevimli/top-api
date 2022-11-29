@@ -1,0 +1,1 @@
+export const ID_NOT_VALID =  'Wrong product id format'
