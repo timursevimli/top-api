@@ -12,7 +12,7 @@ services:
     volumes:
       - ./mongo-data:/data/db
   top-api:
-    image: top-api
+    image: ghcr.io/alesko43/top-api/top-api:develop
     container_name: top_api
     depends_on:
       - mongo

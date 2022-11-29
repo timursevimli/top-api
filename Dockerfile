@@ -10,6 +10,8 @@ RUN npm install --force
 
 COPY . .
 
+RUN npm run build
+
 RUN npm prune --production --force
 
 CMD ["node", "./dist/main.js"]
