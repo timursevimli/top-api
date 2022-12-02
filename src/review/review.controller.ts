@@ -14,6 +14,7 @@ import {
 } from '@nestjs/common';
 import { Request } from 'express';
 import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
+import { TelegramService } from 'src/telegram/telegram.service';
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { UserEmail } from '../decorators/user-email.decorator';
 import { CreateReviewDto } from './dto/create-review.dto';
@@ -22,12 +23,22 @@ import { ReviewService } from './review.service';
 
 @Controller('review')
 export class ReviewController {
-	constructor(private readonly reviewService: ReviewService) {}
+	constructor(
+		private readonly reviewService: ReviewService,
+		private readonly telegramService: TelegramService,
+	) {}
 
 	@Post('create')
 	@UsePipes(new ValidationPipe())
 	async create(@Body() dto: CreateReviewDto) {
 		return this.reviewService.create(dto);
+	}
+
+	@Post('notify')
+	@UsePipes(new ValidationPipe())
+	async notify(@Body() dto: CreateReviewDto) {
+		const message = `Name: ${dto.name}\nTitle: ${dto.description}\nDescription: ${dto.description}\nRating: ${dto.rating}\nProductID: ${dto.productId}\n`;
+		return this.telegramService.sendMessage(message);
 	}
 
 	@Delete(':id')

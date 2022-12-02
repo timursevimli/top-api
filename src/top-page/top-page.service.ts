@@ -56,6 +56,10 @@ export class TopPageService {
 		});
 	}
 
+	async findAll() {
+		return this.topPageModel.find({}).exec();
+	}
+
 	async findByAlias(alias: string) {
 		return this.topPageModel.findOne({ alias }).exec();
 	}

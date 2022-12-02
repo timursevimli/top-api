@@ -4,6 +4,7 @@
 /node_modules
 .env
 /uploads
+mongo-data
 
 # Logs
 logs
@@ -35,3 +36,5 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+backup-docker-compose.yml

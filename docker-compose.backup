@@ -11,13 +11,13 @@ services:
       - 27017:27017
     volumes:
       - ./mongo-data:/data/db
-  # top-api:
-  #   image: top-api
-  #   container_name: top-api
-  #   depends_on:
-  #     - mongo
-  #   restart: always
-  #   ports:
-  #     - 3000:3000
-  #   volumes:
-  #     - ./.env:/app/.env
+  top-api:
+    image: ghcr.io/alesko43/top-api/top-api:develop
+    container_name: top_api
+    depends_on:
+      - mongo
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./.env:/app/.env
