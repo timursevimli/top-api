@@ -17,7 +17,6 @@ import { IdValidationPipe } from 'src/pipes/id-validation.pipe';
 import { ProductCreateDto } from './dto/create-product.dto';
 import { FindProductDto } from './dto/find-product.dto';
 import { PRODUCT_NOT_FOUND } from './product.constant';
-import { ProductModel } from './product.model';
 import { ProductService } from './product.service';
 
 @Controller('product')
